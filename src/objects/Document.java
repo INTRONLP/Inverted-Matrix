@@ -46,7 +46,24 @@ public class Document {
 		}
 		
 		return count;
-	}
+	} 
+
+public double getLogFrequency(String term) {
+int termCnt = termCount(term);
+if(termCnt > 0) {
+return 1 + Math.log10(termCnt);
+}
+
+return 0; 
+}
+
+public double getQueryScore(String[] terms) {
+double score = 0;
+for(String term: terms) {
+score += getLogFrequency(term);
+}
+return score;
+}
 
 	public List<String> getTerms() {
 		return listOfTerms;
